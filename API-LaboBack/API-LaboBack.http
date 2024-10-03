@@ -1,0 +1,6 @@
+@API_LaboBack_HostAddress = http://localhost:5111
+
+GET {{API_LaboBack_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

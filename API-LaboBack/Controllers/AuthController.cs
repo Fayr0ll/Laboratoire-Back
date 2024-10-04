@@ -11,54 +11,52 @@ namespace API_LaboBack.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : ControllerBase //A retoucher
     {
-        private readonly IConfiguration _configuration;
+        //private readonly IConfiguration _configuration;
 
-        public AuthController(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        //public AuthController(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] UserLoginForm form)
-        {
-            // Valider l'utilisateur ici (par exemple, vérifier l'email et le mot de passe)
-            var user = ValidateUser(form.Email, form.MDP);
-            if (user == null)
-            {
-                return Unauthorized();
-            }
+        //[HttpPost("login")]
+        //public IActionResult Login([FromBody] UserLoginForm form)
+        //{
+        //    var user = ValidateUser(form.Email, form.MDP);
+        //    if (user == null)
+        //    {
+        //        return Unauthorized();
+        //    }
 
-            var token = GenerateJwtToken(user);
-            return Ok(new { Token = token });
-        }
+        //    var token = GenerateJwtToken(user);
+        //    return Ok(new { Token = token });
+        //}
 
-        private string GenerateJwtToken(BLL.User user)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        //private string GenerateJwtToken(BLL.User user)
+        //{
+        //    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        //    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            var claims = new[]
-            {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
+        //    var claims = new[]
+        //    {
+        //    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+        //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        //};
 
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
-                signingCredentials: credentials);
+        //    var token = new JwtSecurityToken(
+        //        issuer: _configuration["Jwt:Issuer"],
+        //        audience: _configuration["Jwt:Audience"],
+        //        claims: claims,
+        //        expires: DateTime.Now.AddMinutes(30),
+        //        signingCredentials: credentials);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+        //    return new JwtSecurityTokenHandler().WriteToken(token);
+        //}
 
-        private BLL.User ValidateUser(string email, string password)
-        {
-            // Implémentez la logique de validation de l'utilisateur ici
-            return new BLL.User(email, password); // Exemple simplifié
-        }
+        //private BLL.User ValidateUser(string email, string password)
+        //{
+        //    return new BLL.User(email, password);
+        //}
     }
 }

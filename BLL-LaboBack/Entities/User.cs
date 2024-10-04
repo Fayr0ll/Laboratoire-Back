@@ -10,11 +10,11 @@ namespace BLL_LaboBack.Entities
         private object email;
         private object password;
 
-        public User(string email, string mdp)
-        {
-            this.Email = email;
-            this.MDP = mdp;
-        }
+        //public User(string email, string mdp)
+        //{
+        //    Email = email;
+        //    MDP = mdp;
+        //}
 
         //Propriétés
         public int UserId { get; set; }

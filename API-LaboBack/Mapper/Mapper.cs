@@ -194,35 +194,35 @@ namespace API_LaboBack.Mapper
                 Acompte = entity.Acompte
             };
         }
-        public static BLL.User ToBLL(this UserLoginForm form)
-        {
-            if(form is null) throw new ArgumentNullException(nameof(form));
-            return new BLL.User(form.Email,form.MDP);
-        }
+        //public static BLL.User ToBLL(this UserLoginForm form)
+        //{
+        //    if(form is null) throw new ArgumentNullException(nameof(form));
+        //    return new BLL.User(form.Email,form.MDP);
+        //}
 
-        public static BLL.User ToBLL(this UserRegisterForm form)
-        {
-            if (form is null) throw new ArgumentNullException(nameof(form));
-            return new BLL.User(form.Email, form.MDP);
-        }
+        //public static BLL.User ToBLL(this UserRegisterForm form)
+        //{
+        //    if (form is null) throw new ArgumentNullException(nameof(form));
+        //    return new BLL.User(form.Email, form.MDP);
+        //}
 
-        public static UserListeItem ToListItem(this BLL.User entity) 
-        { 
-            if (entity is null) throw new ArgumentNullException(nameof(entity));
-            return new UserListeItem() { UserId = entity.UserId, Email = entity.Email };
-        }
+        //public static UserListeItem ToListItem(this BLL.User entity) 
+        //{ 
+        //    if (entity is null) throw new ArgumentNullException(nameof(entity));
+        //    return new UserListeItem() { UserId = entity.UserId, Email = entity.Email };
+        //}
 
-        public static UserDetailsAccount ToDetails(this BLL.User entity)
-        {
-            if(entity is null) throw new ArgumentNullException(nameof(entity));
-            return new UserDetailsAccount()
-            {
-                Nom = entity.Nom,
-                Prenom = entity.Prenom,
-                Email = entity.Email,
-                Pays = entity.Pays
-            };
-        }
+        //public static UserDetailsAccount ToDetails(this BLL.User entity)
+        //{
+        //    if(entity is null) throw new ArgumentNullException(nameof(entity));
+        //    return new UserDetailsAccount()
+        //    {
+        //        Nom = entity.Nom,
+        //        Prenom = entity.Prenom,
+        //        Email = entity.Email,
+        //        Pays = entity.Pays
+        //    };
+        //}
     }
 }
 
